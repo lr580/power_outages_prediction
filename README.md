@@ -30,7 +30,7 @@ The reason we use outage rather than other columns(like the number of customers,
 3. Also, there's too many missing values of the `DEMAND.LOSS.MW`, which makes it difficult to use.
 4. Additionally, integrating multiple factors could increase complexity and risk of collinearity, detracting from the model's manageability and predictive accuracy.
 
-We use the formula $severity = \log_2 (number\_of\_customers+1)$ to measure the severity by experience. The reason for the transformation is that, by observing the data, we found that there're a large difference of the order of magnitude, if we directly use the `CUSTOMERS.AFFECTED` feature, it's both hard to measure and train the model, since in large numbers, any "slight" difference will be great.
+We use the formula {% raw %} $severity = \log_2 (number\_of\_customers+1)$ {% endraw %} to measure the severity by experience. The reason for the transformation is that, by observing the data, we found that there're a large difference of the order of magnitude, if we directly use the `CUSTOMERS.AFFECTED` feature, it's both hard to measure and train the model, since in large numbers, any "slight" difference will be great.
 
 Clearly, it's a regression model. The response variable which the model is going to predict is the logarithmic value of `CUSTOMERS.AFFECTED`, the number of people affected by the outage, which can roughly measure the severity of an outage.
 
