@@ -45,7 +45,7 @@ We use the formula $severity = \log_2 (number\_of\_customers+1)$ to measure the 
 
 Clearly, it's a regression model. The response variable which the model is going to predict is the logarithmic value of `CUSTOMERS.AFFECTED`, the number of people affected by the outage, which can roughly measure the severity of an outage.
 
-We use $$R^2$$ as metric to measure our model. The reasons are that:
+We use $R^2$ as metric to measure our model. The reasons are that:
 
 1. Since it's not a classification model, so we won't use classification metrics like precision or recall.
 2. The two metrics RMSE and $R^2$ are classic for regression model. But we only need one of them to determine which model better. So we compare them as below:
@@ -209,8 +209,10 @@ There's improvement on $R^2$ in the final model, which means that our improvemen
 
 To answer the question that whether our model is fair, that is, if it work worse for individuals in some groups than it does in others, we'd perform a fairness analysis below.
 
-The quantitative attribute(evaluation metric) we adopt is $R^2$, so we use $R^2$ across two groups to perform the analysis, that is, absolute difference between the $R^2$ values: $|R^2_{groupX} - R^2_{groupY}|$.
-
+The quantitative attribute(evaluation metric) we adopt is $R^2$, so we use $R^2$ across two groups to perform the analysis, that is, absolute difference between the $R^2$ values: 
+$$
+|R^2_{groupX} - R^2_{groupY}|
+$$
 We simply define: 
 
 1. group X as the outage where `CLIMATE.CATEGORY` is `cold`
