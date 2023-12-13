@@ -210,9 +210,11 @@ There's improvement on $R^2$ in the final model, which means that our improvemen
 To answer the question that whether our model is fair, that is, if it work worse for individuals in some groups than it does in others, we'd perform a fairness analysis below.
 
 The quantitative attribute(evaluation metric) we adopt is $R^2$, so we use $R^2$ across two groups to perform the analysis, that is, absolute difference between the $R^2$ values: 
-$$
-|R^2_{groupX} - R^2_{groupY}|
-$$
+
+$|R^2_{groupX} - R^2_{groupY}|$
+
+
+
 We simply define: 
 
 1. group X as the outage where `CLIMATE.CATEGORY` is `cold`
