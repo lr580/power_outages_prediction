@@ -34,10 +34,12 @@ We use the formula {% raw %} $severity = \log_2 (number\_of\_customers+1)$ {% en
 
 Clearly, it's a regression model. The response variable which the model is going to predict is the logarithmic value of `CUSTOMERS.AFFECTED`, the number of people affected by the outage, which can roughly measure the severity of an outage.
 
-We use $R^2$ as metric to measure our model. The reasons are that:
+$$R^2$$
+
+We use $$R^2$$ as metric to measure our model. The reasons are that:
 
 1. Since it's not a classification model, so we won't use classification metrics like precision or recall.
-2. The two metrics RMSE and $R^2$ are classic for regression model. But we only need one of them to determine which model better. So we compare them as below:
+2. The two metrics RMSE and \(R^2\) are classic for regression model. But we only need one of them to determine which model better. So we compare them as below:
 3. RMSE is preferred when the absolute size of errors is crucial, as it directly reflects the average difference between the predicted and actual values and is more sensitive to larger errors.
 4. $R^2$ is better suited for assessing a model's explanatory power, as it measures how well the model explains the variability of the target variable, and is useful in standardized performance evaluation across different datasets.
 5. We consider the explanatory power and standardized performance more important in our problem, so we use the $R^2$.
