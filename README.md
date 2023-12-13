@@ -41,16 +41,14 @@ The reason we use outage rather than other columns(like the number of customers,
 3. Also, there's too many missing values of the `DEMAND.LOSS.MW`, which makes it difficult to use.
 4. Additionally, integrating multiple factors could increase complexity and risk of collinearity, detracting from the model's manageability and predictive accuracy.
 
-We use the formula {% raw %} $$severity = \log_2 (number\_of\_customers+1)$$ {% endraw %} to measure the severity by experience. The reason for the transformation is that, by observing the data, we found that there're a large difference of the order of magnitude, if we directly use the `CUSTOMERS.AFFECTED` feature, it's both hard to measure and train the model, since in large numbers, any "slight" difference will be great.
+We use the formula $severity = \log_2 (number\_of\_customers+1)$ to measure the severity by experience. The reason for the transformation is that, by observing the data, we found that there're a large difference of the order of magnitude, if we directly use the `CUSTOMERS.AFFECTED` feature, it's both hard to measure and train the model, since in large numbers, any "slight" difference will be great.
 
 Clearly, it's a regression model. The response variable which the model is going to predict is the logarithmic value of `CUSTOMERS.AFFECTED`, the number of people affected by the outage, which can roughly measure the severity of an outage.
-
-$$R^2$$
 
 We use $$R^2$$ as metric to measure our model. The reasons are that:
 
 1. Since it's not a classification model, so we won't use classification metrics like precision or recall.
-2. The two metrics RMSE and \(R^2\) are classic for regression model. But we only need one of them to determine which model better. So we compare them as below:
+2. The two metrics RMSE and $R^2$ are classic for regression model. But we only need one of them to determine which model better. So we compare them as below:
 3. RMSE is preferred when the absolute size of errors is crucial, as it directly reflects the average difference between the predicted and actual values and is more sensitive to larger errors.
 4. $R^2$ is better suited for assessing a model's explanatory power, as it measures how well the model explains the variability of the target variable, and is useful in standardized performance evaluation across different datasets.
 5. We consider the explanatory power and standardized performance more important in our problem, so we use the $R^2$.
